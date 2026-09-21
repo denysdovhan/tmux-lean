@@ -26,4 +26,4 @@ Press **prefix + I** to install.
 
 ## License
 
-[MIT](LICENSE)
+MIT © [Denys Dovhan](https://denysdovhan.com)

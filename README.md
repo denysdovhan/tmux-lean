@@ -26,4 +26,4 @@ Press **prefix + I** to install.
 
 ## License
 
-No license specified.
+[MIT](LICENSE)

@@ -1,2 +1,2 @@
 #!/bin/sh
-tmux source-file "$(dirname "$0")/theme.conf"
+tmux source-file "$(dirname "$0")/src/theme.conf"

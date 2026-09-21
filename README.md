@@ -30,12 +30,11 @@ at `~/.tmux/plugins/tpm/tpm` instead.
 - Yellow session block; each window shows its number, all pane icons, then name.
 - Active windows use brand-colored icons and an inverted light/dark background.
 - Flat vertical dividers meet the colored blocks without background gaps.
-- Right side: battery and hostname only, on a black background in light mode
-  and a light background in dark mode.
-  Battery icon and percentage text are red below 10%,
-  orange below 25%, yellow below 50%, and green otherwise. The charging icon
-  appears only while charging. Hostname text is light in light mode and dark
-  in dark mode; dividers use ANSI gray (`colour8`).
+- Right side: battery and hostname only. Battery backgrounds are red below 10%,
+  orange below 25%, yellow below 50%, and green otherwise, with consistently dark
+  icon and percentage text. The charging icon appears only while charging.
+  Hostname uses a black background with light text in light mode, and a light
+  background with dark text in dark mode. Dividers use ANSI gray (`colour8`).
 
 Window names stay editable. Process icons use tmux's foreground command, not
 the language of an open file or programs hidden behind another runtime.
@@ -44,8 +43,8 @@ status command. Keybindings and terminal settings remain yours.
 
 ## Customize
 
-Edit `theme.conf` for colors, UI icons, separators, and status formats. Edit
-`processes.conf` for process regexes, Nerd Font glyphs, and brand colors on dark
+Edit `src/theme.conf` for colors, UI icons, separators, and status formats. Edit
+`src/processes.conf` for process regexes, Nerd Font glyphs, and brand colors on dark
 and light backgrounds; later matching rows win. Unknown commands use the
 terminal icon. The active window inverts the terminal's background, so its
 brand colors use the opposite background column.
@@ -59,16 +58,8 @@ tmux source-file ~/.config/tmux/tmux.conf
 These files are in TPM's `tmux-lean` directory. Keep a fork for lasting edits;
 local edits can conflict with plugin updates.
 
-## Portability and tests
+## Portability
 
 Tested on macOS with tmux 3.6b. The battery script requires `pmset`; there is no
 Linux battery backend. Machines with no reported battery show no battery text.
 Other systems and terminal/font combinations are unverified.
-
-Tests use Python 3's standard library. The loading check starts and stops its
-own isolated tmux server; it does not touch your sessions.
-
-```sh
-python3 tests/test_tmux_battery.py
-python3 tests/test_tmux_theme.py
-```

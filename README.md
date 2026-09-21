@@ -1,6 +1,10 @@
 # tmux-lean
 
-![tmux-lean in light mode, with shell, Node.js and Python pane icons, battery percentage and hostname](assets/screenshot.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshot-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="assets/screenshot-light.png">
+  <img alt="tmux-lean with shell, Node.js and Python pane icons, battery percentage and hostname" src="assets/screenshot-light.png">
+</picture>
 
 ## Features
 

@@ -26,12 +26,12 @@ with tempfile.TemporaryDirectory(prefix='tmux-lean-') as directory:
     tmux('run-shell', shlex.quote(str(plugin / 'lean.tmux')))
     assert option('@battery-script') == str(plugin / 'battery.sh')
     assert option('@muted-colour') == 'colour8'
-    assert render('#{E:@host-style}') == 'fg=colour7,bg=default,nobold'
+    assert render('#{E:@host-style}') == 'fg=colour0,bg=colour7,nobold'
     assert option('window-status-separator') == ''
     assert option('status-left').endswith('#S#{E:@window-separator}')
     assert option('window-status-current-format').endswith('#{E:@window-separator}')
     assert option('status-right') == (
-      '#[fg=#{E:@status-fg},bg=default,nobold]#{E:@battery}'
+      '#[fg=#{E:@window-active-fg},bg=#{E:@window-active-bg},nobold]#{E:@battery}'
       '#{E:@info-separator}#[#{E:@host-style}] #{E:@host} ')
 
     # Substitute command formats to test aliases without launching runtimes.
@@ -46,7 +46,10 @@ with tempfile.TemporaryDirectory(prefix='tmux-lean-') as directory:
       tmux('set', '-g', '@is-light', light)
       assert render('#{E:@status-bg}') == background
       assert render('#{E:@status-fg}') == foreground
-      assert render('#{E:@host-style}') == f'fg={foreground},bg=default,nobold'
+      host_fg = 'colour15' if light == '1' else 'colour0'
+      assert render('#{E:@host-style}') == f'fg={host_fg},bg={foreground},nobold'
+      assert render('#{E:status-right}').startswith(
+        f'#[fg={host_fg},bg={foreground},nobold]')
       assert render('#{E:@colour-node}') == brand
 
     tmux('split-window', '-h', '-d')

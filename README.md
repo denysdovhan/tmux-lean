@@ -30,10 +30,11 @@ at `~/.tmux/plugins/tpm/tpm` instead.
 - Yellow session block; each window shows its number, all pane icons, then name.
 - Active windows use brand-colored icons and an inverted light/dark background.
 - Flat vertical dividers meet the colored blocks without background gaps.
-- Right side: battery and hostname only, on the terminal default background.
+- Right side: battery and hostname only, on a black background in light mode
+  and a light background in dark mode.
   Battery icon and percentage text are red below 10%,
   orange below 25%, yellow below 50%, and green otherwise. The charging icon
-  appears only while charging. Hostname text is dark in light mode and light
+  appears only while charging. Hostname text is light in light mode and dark
   in dark mode; dividers use ANSI gray (`colour8`).
 
 Window names stay editable. Process icons use tmux's foreground command, not

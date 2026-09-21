@@ -13,8 +13,10 @@
 ## Installation
 
 Requires **tmux 3.6+**, a **Nerd Font**, and [TPM](https://github.com/tmux-plugins/tpm).
-Battery display hides when macOS `pmset` is missing or reports no battery.
-Light/dark switching requires a terminal that reports its theme.
+
+> [!NOTE]
+> Battery display hides when macOS `pmset` is missing or reports no battery.
+> Light/dark switching requires a terminal that reports its theme.
 
 Add to `tmux.conf` before TPM initialization (and before `tmux-continuum`, if used):
 
